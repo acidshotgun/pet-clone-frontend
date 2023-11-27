@@ -1,4 +1,5 @@
 import UserProfile from "../../components/UserProfile/UserProfile";
+import Dashboards from "../../components/Dashboards/Dashboards";
 
 import styles from "./UserPage.module.scss";
 
@@ -24,6 +25,7 @@ const UserPage = () => {
           avatarUrl={fakeData.avatarUrl}
           descr={fakeData.descr}
         />
+        <Dashboards />
       </div>
     </div>
   );

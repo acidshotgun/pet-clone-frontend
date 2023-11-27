@@ -50,6 +50,7 @@
     border-radius: 5px;
     background-color: #1e1e1e;
     top: 45px;
+    z-index: 9999;
 
     &.active {
       opacity: 1;

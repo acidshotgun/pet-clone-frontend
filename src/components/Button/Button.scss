@@ -1,0 +1,39 @@
+@import "../../styles/variables.scss";
+
+.button {
+  height: 34px;
+  border: none;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0 auto;
+  cursor: pointer;
+
+  .button_icon {
+    margin-top: 5px;
+  }
+}
+
+.big {
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.small {
+  width: 76px;
+}
+
+.white_button {
+  background-color: $white;
+}
+
+.grey_button {
+  background-color: $light_gray;
+  color: $white;
+  padding-left: 17px;
+  padding-right: 17px;
+  transition: 0.2s all;
+  &:hover {
+    background-color: $hover_gray;
+  }
+}
