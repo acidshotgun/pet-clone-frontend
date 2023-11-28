@@ -1,15 +1,15 @@
 .container {
-  padding-top: 20px;
+  // padding-top: 20px;
+  padding-top: 70px;
   display: flex;
   justify-content: space-between;
 
   .content {
     width: 640px;
-    height: 1000px;
-    border: 1px solid #ffff;
   }
 
   .info {
     width: 310px;
+    position: relative;
   }
 }

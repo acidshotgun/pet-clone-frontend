@@ -1,5 +1,6 @@
+import PinnedPosts from "../../components/PinnedPosts/PinnedPosts";
 import UserProfile from "../../components/UserProfile/UserProfile";
-import Dashboards from "../../components/Dashboards/Dashboards";
+import Dashboards from "../../components/DashboardsList/DashboardsList";
 
 import styles from "./UserPage.module.scss";
 
@@ -16,7 +17,9 @@ const fakeData = {
 const UserPage = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.content}></div>
+      <div className={styles.content}>
+        <PinnedPosts />
+      </div>
 
       <div className={styles.info}>
         <UserProfile
