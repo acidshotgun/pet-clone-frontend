@@ -1,6 +1,6 @@
 # pet-clone-frontend
 
-<h1>[https://acidshotgun.github.io/](https://acidshotgun.github.io/)</h1>
+[https://acidshotgun.github.io/](https://acidshotgun.github.io/)
 
 todo:
 
