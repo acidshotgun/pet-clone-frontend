@@ -64,7 +64,6 @@ const UserProfile = ({
               )}
             </div>
 
-            <div className={styles.subs}></div>
             <hr />
             <div className={styles.userDescr}>
               <p>{descr}</p>

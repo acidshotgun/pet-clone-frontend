@@ -8,6 +8,7 @@ interface IDropdownMenu {
   picture: false | string;
   pictureType?: "circle" | "square";
   text: string;
+  align: "left" | "right";
 }
 
 const DropdownMenu = ({
@@ -15,6 +16,7 @@ const DropdownMenu = ({
   picture,
   pictureType,
   text,
+  align,
 }: IDropdownMenu) => {
   const [open, setOpen] = useState(false);
 
@@ -59,6 +61,7 @@ const DropdownMenu = ({
       </div>
 
       <div
+        style={align === "left" ? { left: "0" } : { right: "0" }}
         className={`${styles.dropdownMenu} ${
           open ? styles.active : styles.inactive
         }`}

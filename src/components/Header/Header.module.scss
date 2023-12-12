@@ -4,7 +4,8 @@
 header {
   width: 100vw;
   height: 50px;
-  padding: 5px 20px;
+  justify-content: space-between;
+  padding: 5px 10px;
   display: flex;
   position: fixed;
   background-color: #1e1e1e;
@@ -18,7 +19,6 @@ header {
   .logo {
     width: 164px;
     display: flex;
-    margin-right: 25px;
     justify-content: space-between;
 
     @include lg {
@@ -43,26 +43,10 @@ header {
       }
     }
   }
-
-  .dropdownLinks {
-    min-width: 250px;
-    height: 40px;
-    margin-right: 25px;
-
-    @include lg {
-      margin-right: 5px;
-    }
-
-    @include md {
-      min-width: auto;
-    }
-  }
-
   input {
     position: relative;
     width: 950px;
     height: 100%;
-    margin-right: 25px;
     padding: 5px 25px;
     box-shadow: 0 0 0 0.2px $white;
     border: none;
@@ -74,15 +58,6 @@ header {
 
     @include lg {
       margin-right: 5px;
-    }
-  }
-
-  .dropdownUser {
-    min-width: 214px;
-    margin-left: auto;
-
-    @include md {
-      min-width: auto;
     }
   }
 }

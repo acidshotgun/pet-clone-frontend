@@ -12,27 +12,25 @@ const Header = () => {
         <img src={logo} alt="logo"></img>
         <p className={styles.name}>НАЗВАНИЕ</p>
       </div>
-      <div className={styles.dropdownLinks}>
-        <DropdownMenu
-          content={LINKS_MENU}
-          picture={
-            "https://img0.liveinternet.ru/images/attach/c/3/83/478/83478422_1.gif"
-          }
-          pictureType="circle"
-          text={"@community_name"}
-        />
-      </div>
+      <DropdownMenu
+        content={LINKS_MENU}
+        picture={
+          "https://img0.liveinternet.ru/images/attach/c/3/83/478/83478422_1.gif"
+        }
+        pictureType="circle"
+        text={"@community_name"}
+        align={"left"}
+      />
       <input placeholder="Search" type="search"></input>
-      <div className={styles.dropdownUser}>
-        <DropdownMenu
-          content={SETTINGS_MENU}
-          picture={
-            "https://img0.liveinternet.ru/images/attach/c/3/83/478/83478422_1.gif"
-          }
-          pictureType="square"
-          text={"@user_name"}
-        />
-      </div>
+      <DropdownMenu
+        content={SETTINGS_MENU}
+        picture={
+          "https://img0.liveinternet.ru/images/attach/c/3/83/478/83478422_1.gif"
+        }
+        pictureType="square"
+        text={"@user_name"}
+        align={"right"}
+      />
     </header>
   );
 };

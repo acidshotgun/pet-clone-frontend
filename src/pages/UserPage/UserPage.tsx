@@ -1,6 +1,7 @@
 import PinnedPosts from "../../components/PinnedPosts/PinnedPosts";
 import UserProfile from "../../components/UserProfile/UserProfile";
 import Dashboards from "../../components/DashboardsList/DashboardsList";
+import CreatePost from "../../components/CreatePost/CreatePost";
 
 import styles from "./UserPage.module.scss";
 
@@ -19,6 +20,7 @@ const UserPage = () => {
     <div className={styles.container}>
       <div className={styles.content}>
         <PinnedPosts />
+        <CreatePost />
       </div>
 
       <div className={styles.info}>
