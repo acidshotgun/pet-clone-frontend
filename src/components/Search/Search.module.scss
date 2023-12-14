@@ -1,0 +1,39 @@
+@import "../../styles/variables.scss";
+
+.search {
+  display: flex;
+  width: 50%;
+  height: 40px;
+  margin: 0 10px 0 10px;
+  .form {
+    width: 100%;
+    padding: 5px 25px;
+    box-shadow: 0 0 0 0.2px $white;
+    border: none;
+    border-radius: 50px 0 0 50px;
+    background-color: $main_gray;
+    outline: none;
+
+    .input {
+      width: 100%;
+      height: 100%;
+      font-size: 16px;
+      color: #757575;
+      outline: none;
+      background: none;
+      border: none;
+    }
+  }
+
+  .button {
+    width: 90px;
+    box-shadow: 0 0 0 0.2px $white;
+    border: none;
+    border-radius: 0 50px 50px 0;
+    font-size: 15px;
+    color: #757575;
+    background-color: $background_dark;
+    outline: none;
+    cursor: pointer;
+  }
+}

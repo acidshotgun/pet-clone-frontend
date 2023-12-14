@@ -4,60 +4,33 @@
 header {
   width: 100vw;
   height: 50px;
-  justify-content: space-between;
   padding: 5px 10px;
-  display: flex;
   position: fixed;
   background-color: #1e1e1e;
   z-index: 99;
 
-  @include lg {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-
-  .logo {
-    width: 164px;
+  .container {
+    max-width: 1920px;
+    height: 100%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
 
-    @include lg {
-      margin-right: 0;
-      width: auto;
-    }
-
-    img {
-      margin-right: 5px;
-    }
-
-    .name {
+    .logo {
       display: flex;
-      margin: 0;
-      font-size: 20px;
-      font-weight: bold;
-      color: #ffffff;
-      align-items: center;
+      gap: 10px;
+      .name {
+        display: flex;
+        margin: 0;
+        font-size: 20px;
+        font-weight: bold;
+        color: #ffffff;
+        align-items: center;
 
-      @include lg {
-        display: none;
+        @include lg {
+          display: none;
+        }
       }
-    }
-  }
-  input {
-    position: relative;
-    width: 950px;
-    height: 100%;
-    padding: 5px 25px;
-    box-shadow: 0 0 0 0.2px $white;
-    border: none;
-    border-radius: 50px;
-    font-size: 13px;
-    color: #757575;
-    background-color: #272727;
-    outline: none;
-
-    @include lg {
-      margin-right: 5px;
     }
   }
 }

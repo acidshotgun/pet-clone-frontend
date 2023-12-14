@@ -41,8 +41,8 @@ const DropdownMenu = ({
   });
 
   return (
-    <div className={styles.dropdownContainer} ref={menuRef}>
-      <div className={styles.dropdownTrigger} onClick={openMenu}>
+    <div className={styles.dropdownContainer}>
+      <div className={styles.dropdownTrigger} onClick={openMenu} ref={menuRef}>
         {picture ? (
           <img
             className={`${styles.picture} ${

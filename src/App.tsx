@@ -10,7 +10,9 @@ const App = () => {
       <Router>
         <Header />
         <div className={styles.container}>
-          <Routes>{/* <Route path="/" element={<UserPage />} /> */}</Routes>
+          <Routes>
+            <Route path="/" element={<UserPage />} />
+          </Routes>
         </div>
       </Router>
     </>
