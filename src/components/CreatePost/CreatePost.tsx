@@ -1,7 +1,7 @@
 import ComponentLayout from "../Layout/ComponentLayout/ComponentLayout";
 import Button from "../Button/Button";
 
-import icon_image from "../../images/icons/icon_image.svg";
+import iconImg from "../../images/icons/createPost/postImage.svg";
 
 import styles from "./CreatePost.module.scss";
 
@@ -11,11 +11,12 @@ const CreatePost = () => {
       <div className={styles.wrapper}>
         <div className={styles.avatar}>
           <img
-            src="https://img0.liveinternet.ru/images/attach/c/3/83/478/83478422_1.gif"
+            src="https://i.pinimg.com/564x/27/d1/03/27d1032d285f26f60a7e3881d9d0da4b.jpg"
             alt="ava"
           ></img>
         </div>
-        <input placeholder="What's new?"></input>
+        <input className={styles.input} placeholder="What's new?"></input>
+        <Button icon={iconImg} type="greyButtonIcon" />
       </div>
     </ComponentLayout>
   );

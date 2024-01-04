@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  .leftGroup {
+    display: flex;
+    gap: 10px;
+  }
+}

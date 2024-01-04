@@ -32,7 +32,7 @@ const Header = () => {
           <DropdownMenu
             content={SETTINGS_MENU}
             picture={
-              "https://img0.liveinternet.ru/images/attach/c/3/83/478/83478422_1.gif"
+              "https://i.pinimg.com/564x/27/d1/03/27d1032d285f26f60a7e3881d9d0da4b.jpg"
             }
             pictureType="square"
             text={"@user_name"}

@@ -1,17 +1,19 @@
 @import "../../styles/variables.scss";
 
 .button {
+  display: flex;
+  gap: 5px;
+  align-items: center;
   height: 34px;
   border: none;
   border-radius: 50px;
   font-size: 12px;
   font-weight: 700;
-  margin: 0 auto;
   cursor: pointer;
 
-  .button_icon {
-    margin-top: 5px;
-  }
+  // .button_icon {
+  //   margin-right: 5px;
+  // }
 }
 
 .big {
@@ -21,6 +23,17 @@
 
 .small {
   width: 76px;
+}
+
+.greyButtonIcon {
+  background-color: $light_gray;
+  padding: 7px 17px;
+  color: $white;
+  cursor: pointer;
+  transition: 0.2s all;
+  &:hover {
+    background-color: $hover_gray;
+  }
 }
 
 .white_button {

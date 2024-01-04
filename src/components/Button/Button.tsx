@@ -6,21 +6,21 @@ interface IButton {
   icon?: string;
   className?: string;
   onClick?: () => void;
-  size: string;
+  type: string;
 }
 
-const Button = ({ text, icon, className, onClick, size }: IButton) => {
+const Button = ({ text, icon, className, onClick, type }: IButton) => {
   const test_btn = () => {
     console.log("click");
   };
 
   return (
     <button
-      className={`button ${className} ${size}`}
+      className={`button ${className} ${type}`}
       onClick={() => test_btn()}
     >
       {icon && <img src={icon} alt="icon" className="button_icon" />}
-      {text}
+      {text && <span>{text}</span>}
     </button>
   );
 };

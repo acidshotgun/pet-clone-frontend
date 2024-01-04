@@ -20,7 +20,7 @@ const UserProfile = ({
   avatarUrl,
   descr,
 }: IUserProfile) => {
-  const isAuth = false;
+  const isAuth = true;
 
   return (
     <>
@@ -45,21 +45,21 @@ const UserProfile = ({
                 <Button
                   text="Edit profile"
                   className={"white_button"}
-                  size={"big"}
+                  type={"big"}
                 />
               ) : (
                 <>
                   <Button
                     text={"Subscribe"}
                     className={"white_button"}
-                    size={"big"}
+                    type={"big"}
                   />
                   <Button
                     icon={messages}
                     className={"grey_button"}
-                    size={"big"}
+                    type={"big"}
                   />
-                  <Button text="more" className={"grey_button"} size={"big"} />
+                  <Button text="more" className={"grey_button"} type={"big"} />
                 </>
               )}
             </div>

@@ -31,6 +31,12 @@ const fakeData = [
 ];
 
 const PinnedPosts = () => {
+  const isPinnedPosts = true;
+
+  if (!isPinnedPosts) {
+    return null;
+  }
+
   return (
     <ComponentLayout description="Pinned posts">
       <ul>
