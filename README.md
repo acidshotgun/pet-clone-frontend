@@ -1,6 +1,6 @@
 # pet-clone-frontend
 
-[https://acidshotgun.github.io/](https://acidshotgun.github.io/)
+[https://pet-clone-frontend.vercel.app/](https://pet-clone-frontend.vercel.app/)
 
 todo:
 - [ ] ПЕРЕДЕЛАТЬ ХЭДЭР + АДАПТИРОВАТЬ ЕГО (вкл `DropdownMenu`)
