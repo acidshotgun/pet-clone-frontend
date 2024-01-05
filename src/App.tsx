@@ -3,7 +3,6 @@ import Header from "./components/Header/Header";
 
 // Pages
 import UserPage from "./pages/UserPage/UserPage";
-import DashboardPage from "./pages/DashboardPage/DashboardPage";
 
 import styles from "./App.module.scss";
 
@@ -15,7 +14,6 @@ const App = () => {
         <div className={styles.container}>
           <Routes>
             <Route path="/" element={<UserPage />} />
-            <Route path="/dashboards" element={<DashboardPage />} />
           </Routes>
         </div>
       </Router>
