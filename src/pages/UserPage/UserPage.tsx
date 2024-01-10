@@ -5,7 +5,7 @@ import CreatePost from "../../components/CreatePost/CreatePost";
 import SortPosts from "../../components/SortPosts/SortPosts";
 import Post from "../../components/Post/Post";
 
-import styles from "./UserPage.module.scss";
+import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 
 const fakeData = {
   backgroundImage:
@@ -20,28 +20,25 @@ const fakeData = {
 const UserPage = () => {
   const isAuth = true;
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.content}>
-        <PinnedPosts />
-        {isAuth && <CreatePost />}
-        <SortPosts />
-        <Post image="https://www.zastavki.com/pictures/1920x1080/2012/Widescreen_Russian_dolls_035029_.jpg" />
-        <Post image="https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg" />
-        <Post image="https://i.pinimg.com/564x/9b/36/4e/9b364eed8278ff1abbc73d551df929b0.jpg" />
-      </div>
+  const leftSide = [
+    <PinnedPosts />,
+    isAuth && <CreatePost />,
+    <SortPosts />,
+    <Post image="https://www.zastavki.com/pictures/1920x1080/2012/Widescreen_Russian_dolls_035029_.jpg" />,
+    <Post image="https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg" />,
+    <Post image="https://i.pinimg.com/564x/9b/36/4e/9b364eed8278ff1abbc73d551df929b0.jpg" />,
+  ];
+  const rightSide = [
+    <UserProfile
+      backgroundImage={fakeData.backgroundImage}
+      nickName={fakeData.nickName}
+      avatarUrl={fakeData.avatarUrl}
+      descr={fakeData.descr}
+    />,
+    <Dashboards />,
+  ];
 
-      <div className={styles.info}>
-        <UserProfile
-          backgroundImage={fakeData.backgroundImage}
-          nickName={fakeData.nickName}
-          avatarUrl={fakeData.avatarUrl}
-          descr={fakeData.descr}
-        />
-        <Dashboards />
-      </div>
-    </div>
-  );
+  return <PageLayout leftSide={leftSide} rightSide={rightSide}></PageLayout>;
 };
 
 export default UserPage;
