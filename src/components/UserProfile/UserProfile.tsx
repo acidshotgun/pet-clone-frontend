@@ -1,3 +1,4 @@
+import LogoImage from "../LogoImage/LogoImage";
 import Button from "../Button/Button";
 import ComponentLayout from "../Layout/ComponentLayout/ComponentLayout";
 
@@ -30,7 +31,7 @@ const UserProfile = ({
       <ComponentLayout>
         <div className={styles.information}>
           <div className={styles.userHeader}>
-            <img className={styles.userAvatar} src={avatarUrl} alt="#"></img>
+            <LogoImage image={avatarUrl} />
             <span className={styles.userName}>@{nickName}</span>
           </div>
           <div className={styles.subs}>

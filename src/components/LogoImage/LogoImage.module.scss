@@ -1,0 +1,11 @@
+@import "../../styles/variables.scss";
+
+.logoImage {
+  width: 90px;
+  height: 90px;
+  // margin: 0 auto;
+  align-items: center;
+  border-radius: 100%;
+  border: 3px solid $white;
+  background-size: cover;
+}

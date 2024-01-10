@@ -38,14 +38,6 @@ hr {
     flex-direction: column;
     margin: 0 auto;
     width: 104px;
-    .userAvatar {
-      width: 90px;
-      height: 90px;
-      margin: 0 auto;
-      border-radius: 100%;
-      border: 3px solid $white;
-      background-size: cover;
-    }
     .userName {
       margin-top: 7px;
       font-size: 15px;
