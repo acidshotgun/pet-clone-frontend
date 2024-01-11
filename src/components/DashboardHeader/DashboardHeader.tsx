@@ -1,4 +1,3 @@
-import ComponentLayout from "../Layout/ComponentLayout/ComponentLayout";
 import LogoImage from "../LogoImage/LogoImage";
 import Button from "../Button/Button";
 

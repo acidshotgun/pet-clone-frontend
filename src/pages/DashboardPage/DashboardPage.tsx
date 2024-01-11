@@ -7,14 +7,20 @@ import DashboardHeader from "../../components/DashboardHeader/DashboardHeader";
 import LayoutPage from "../../components/Layout/PageLayout/PageLayout";
 
 const DashboardPage = () => {
-  const leftSide = [
-    <PinnedPosts />,
-    <SortPosts />,
-    <Post image="https://www.zastavki.com/pictures/1920x1080/2012/Widescreen_Russian_dolls_035029_.jpg" />,
-    <Post image="https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg" />,
-    <Post image="https://i.pinimg.com/564x/9b/36/4e/9b364eed8278ff1abbc73d551df929b0.jpg" />,
-  ];
-  const rightSide = [<Dashboards />];
+  const leftSide = (
+    <>
+      <PinnedPosts />
+      <SortPosts />
+      <Post image="https://www.zastavki.com/pictures/1920x1080/2012/Widescreen_Russian_dolls_035029_.jpg" />
+      <Post image="https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg" />
+      <Post image="https://i.pinimg.com/564x/9b/36/4e/9b364eed8278ff1abbc73d551df929b0.jpg" />
+    </>
+  );
+  const rightSide = (
+    <>
+      <Dashboards />
+    </>
+  );
 
   return (
     <>
