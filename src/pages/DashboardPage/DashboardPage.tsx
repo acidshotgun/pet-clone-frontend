@@ -6,7 +6,34 @@ import DashboardHeader from "../../components/DashboardHeader/DashboardHeader";
 
 import LayoutPage from "../../components/Layout/PageLayout/PageLayout";
 
+const dataArray = [
+  {
+    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+  },
+  {
+    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+  },
+  {
+    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+  },
+  {
+    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+  },
+];
+
 const DashboardPage = () => {
+  // ЭТО вар, где я буду рендерить посты, когда их будет много
+  // const leftSide = (
+  //   <>
+  //     <PinnedPosts />
+  //     {isAuth && <CreatePost />}
+  //     <SortPosts />
+  //     {dataArray.map((item) => {
+  //       return <Post image={item.pic} />;
+  //     })}
+  //   </>
+  // );
+
   const leftSide = (
     <>
       <PinnedPosts />
@@ -16,6 +43,7 @@ const DashboardPage = () => {
       <Post image="https://i.pinimg.com/564x/9b/36/4e/9b364eed8278ff1abbc73d551df929b0.jpg" />
     </>
   );
+
   const rightSide = (
     <>
       <Dashboards />
