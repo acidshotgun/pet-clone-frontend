@@ -17,8 +17,35 @@ const fakeData = {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
 };
 
+const dataArray = [
+  {
+    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+  },
+  {
+    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+  },
+  {
+    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+  },
+  {
+    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+  },
+];
+
 const UserPage = () => {
   const isAuth = true;
+
+  // ЭТО вар, где я буду рендерить посты, когда их будет много
+  // const leftSide = (
+  //   <>
+  //     <PinnedPosts />
+  //     {isAuth && <CreatePost />}
+  //     <SortPosts />
+  //     {dataArray.map((item) => {
+  //       return <Post image={item.pic} />;
+  //     })}
+  //   </>
+  // );
 
   const leftSide = (
     <>
