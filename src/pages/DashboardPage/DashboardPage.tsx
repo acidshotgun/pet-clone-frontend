@@ -1,8 +1,10 @@
 import PinnedPosts from "../../components/PinnedPosts/PinnedPosts";
-import Dashboards from "../../components/DashboardsList/DashboardsList";
+import Discussions from "../../components/Discussions/Discussions";
+import Contacts from "../../components/Contacts/Contacts";
 import SortPosts from "../../components/SortPosts/SortPosts";
 import Post from "../../components/Post/Post";
 import DashboardHeader from "../../components/DashboardHeader/DashboardHeader";
+import DashboardProfile from "../../components/DashboardProfile/DashboardProfile";
 
 import LayoutPage from "../../components/Layout/PageLayout/PageLayout";
 
@@ -46,7 +48,9 @@ const DashboardPage = () => {
 
   const rightSide = (
     <>
-      <Dashboards />
+      <DashboardProfile />
+      <Discussions />
+      <Contacts />
     </>
   );
 

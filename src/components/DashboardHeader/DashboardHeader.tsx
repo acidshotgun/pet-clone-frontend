@@ -22,9 +22,13 @@ const DashboardHeader = ({
         <img src={backgroundImage} alt="bg"></img>
       </div>
       <div className={styles.info}>
-        <LogoImage image={avatarUrl} />
-        <p className={styles.dashboardName}>{dashboardName}</p>
-        <span className={styles.link}>{link}</span>
+        <div className={styles.dasboardAvatar}>
+          <LogoImage image={avatarUrl} />
+        </div>
+        <div className={styles.dashboardInfo}>
+          <p className={styles.dashboardName}>{dashboardName}</p>
+          <span className={styles.link}>{link}</span>
+        </div>
         <Button text="join" className={"white_button"} type={"big"} />
       </div>
     </div>

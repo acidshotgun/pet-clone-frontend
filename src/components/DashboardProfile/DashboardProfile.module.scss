@@ -1,0 +1,24 @@
+@import "../../styles/variables.scss";
+
+.information {
+  .dashboardDescription {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .text {
+      font-size: 13px;
+      font-weight: 100;
+      color: $white;
+    }
+    .createdAt {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .date {
+        font-size: 12px;
+        font-weight: 300;
+        color: $gray_text;
+      }
+    }
+  }
+}
