@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 import arrow from "../../images/icons/arrow.png";
 import styles from "./DropdownMenu.module.scss";
@@ -28,7 +29,7 @@ const DropdownMenu = ({
 
   useEffect(() => {
     let handler = (e: any) => {
-      if (!menuRef.current.contains(e.target)) {
+      if (!menuRef.current.contains(e.target) && !e.target.closest("a")) {
         setOpen(false);
       }
     };
@@ -72,7 +73,7 @@ const DropdownMenu = ({
               <hr className={styles.separator} key={i}></hr>
             ) : (
               <li className={styles.listItem} key={i} onClick={openMenu}>
-                <a href={item.link}>
+                <Link to={item.link}>
                   {item.icon && (
                     <img
                       src={item.icon}
@@ -81,7 +82,7 @@ const DropdownMenu = ({
                     ></img>
                   )}
                   <span className={styles.link}>{item.name}</span>
-                </a>
+                </Link>
               </li>
             );
           })}
