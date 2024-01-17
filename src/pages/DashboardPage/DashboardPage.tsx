@@ -1,5 +1,5 @@
 import PinnedPosts from "../../components/PinnedPosts/PinnedPosts";
-import Discussions from "../../components/Discussions/Discussions";
+import DiscussionsList from "../../components/Discussions/DiscussionsList";
 import Contacts from "../../components/Contacts/Contacts";
 import SortPosts from "../../components/SortPosts/SortPosts";
 import Post from "../../components/Post/Post";
@@ -49,7 +49,7 @@ const DashboardPage = () => {
   const rightSide = (
     <>
       <DashboardProfile />
-      <Discussions />
+      <DiscussionsList />
       <Contacts />
     </>
   );

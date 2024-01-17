@@ -1,6 +1,6 @@
 import PinnedPosts from "../../components/PinnedPosts/PinnedPosts";
 import UserProfile from "../../components/UserProfile/UserProfile";
-import Dashboards from "../../components/DashboardsList/DashboardsList";
+import DashboardsList from "../../components/DashboardsList/DashboardsList";
 import CreatePost from "../../components/CreatePost/CreatePost";
 import SortPosts from "../../components/SortPosts/SortPosts";
 import Post from "../../components/Post/Post";
@@ -17,18 +17,38 @@ const fakeData = {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
 };
 
-const dataArray = [
+const fakeBoard = [
   {
-    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+    name: "Имя сообщества",
+    image:
+      "https://i.pinimg.com/564x/78/7f/56/787f56daf00fc04d0b75c2d7c6f4422f.jpg",
+    boardId: "@comm_name",
+    descr: "Some descr ;))",
+    boardLink: "id123123",
   },
   {
-    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+    name: "Имя сообщества",
+    image:
+      "https://i.pinimg.com/564x/78/7f/56/787f56daf00fc04d0b75c2d7c6f4422f.jpg",
+    boardId: "@comm_name",
+    descr: "Some descr ;))",
+    boardLink: "id123123",
   },
   {
-    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+    name: "Имя сообщества",
+    image:
+      "https://i.pinimg.com/564x/78/7f/56/787f56daf00fc04d0b75c2d7c6f4422f.jpg",
+    boardId: "@comm_name",
+    descr: "Some descr ;))",
+    boardLink: "id123123",
   },
   {
-    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+    name: "Имя сообщества",
+    image:
+      "https://i.pinimg.com/564x/78/7f/56/787f56daf00fc04d0b75c2d7c6f4422f.jpg",
+    boardId: "@comm_name",
+    descr: "Some descr ;))",
+    boardLink: "id123123",
   },
 ];
 
@@ -66,7 +86,7 @@ const UserPage = () => {
         avatarUrl={fakeData.avatarUrl}
         descr={fakeData.descr}
       />
-      <Dashboards />
+      <DashboardsList data={fakeBoard} />
     </>
   );
 
