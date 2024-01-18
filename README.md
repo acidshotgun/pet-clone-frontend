@@ -1,6 +1,6 @@
 # pet-clone-frontend
 
-[https://pet-clone-frontend.vercel.app/](https://pet-clone-frontend.vercel.app/)
+[https://pet-clone-frontend.vercel.app/](https://pet-clone-frontend.vercel.app/mypage)
 
 [https://pet-clone-frontend.vercel.app/dashboard](https://pet-clone-frontend.vercel.app/dashboard)
 
