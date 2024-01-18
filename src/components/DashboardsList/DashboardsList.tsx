@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import ComponentLayout from "../Layout/ComponentLayout/ComponentLayout";
-import DashboardsListItem from "../DashboardsListItem/DashboardsListItem";
+import DashboardsListItem from "./DashboardsListItem/DashboardsListItem";
 
 import styles from "./Dashboard.module.scss";
 

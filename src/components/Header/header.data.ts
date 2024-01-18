@@ -7,7 +7,7 @@ import news from "../../images/icons/menu/news.svg";
 import person from "../../images/icons/menu/person.svg";
 
 export const SETTINGS_MENU = [
-  { name: "My page", icon: person, link: "/mypage" },
+  { name: "My page", icon: person, link: "/" },
   { name: "News", icon: news, link: "#" },
   { name: "Messages", icon: messages, link: "#" },
   { name: "Dashboards", icon: dashboard, link: "#" },

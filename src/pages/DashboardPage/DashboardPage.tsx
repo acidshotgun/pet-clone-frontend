@@ -1,5 +1,5 @@
 import PinnedPosts from "../../components/PinnedPosts/PinnedPosts";
-import DiscussionsList from "../../components/Discussions/DiscussionsList";
+import DiscussionsList from "../../components/DiscussionsList/DiscussionsList";
 import Contacts from "../../components/Contacts/Contacts";
 import SortPosts from "../../components/SortPosts/SortPosts";
 import Post from "../../components/Post/Post";
@@ -8,18 +8,31 @@ import DashboardProfile from "../../components/DashboardProfile/DashboardProfile
 
 import LayoutPage from "../../components/Layout/PageLayout/PageLayout";
 
-const dataArray = [
+const discissionsData = [
   {
-    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+    name: "Help me to find a movie!!! / Search",
+    messages: "143 Messages",
+    date: "12 Oct, 2022",
   },
   {
-    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+    name: "Help me to find a movie!!! / Search",
+    messages: "143 Messages",
+    date: "12 Oct, 2022",
   },
   {
-    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+    name: "Help me to find a movie!!! / Search",
+    messages: "143 Messages",
+    date: "12 Oct, 2022",
   },
   {
-    pic: "https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg",
+    name: "Help me to find a movie!!! / Search",
+    messages: "143 Messages",
+    date: "12 Oct, 2022",
+  },
+  {
+    name: "Help me to find a movie!!! / Search",
+    messages: "143 Messages",
+    date: "12 Oct, 2022",
   },
 ];
 
@@ -49,7 +62,7 @@ const DashboardPage = () => {
   const rightSide = (
     <>
       <DashboardProfile />
-      <DiscussionsList />
+      <DiscussionsList discussionsData={discissionsData} />
       <Contacts />
     </>
   );
