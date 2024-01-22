@@ -1,8 +1,8 @@
 # pet-clone-frontend
 
-[https://pet-clone-frontend.vercel.app/](https://pet-clone-frontend.vercel.app/mypage)
+[https://pet-clone-frontend.vercel.app/](https://pet-clone-frontend.vercel.app/)
 
-[https://pet-clone-frontend.vercel.app/dashboard](https://pet-clone-frontend.vercel.app/dashboard)
+[https://pet-clone-frontend.vercel.app/dashboard/id123123](https://pet-clone-frontend.vercel.app/dashboard/id123123)
 
 todo:
 - [ ] ПЕРЕДЕЛАТЬ ХЭДЭР + АДАПТИРОВАТЬ ЕГО (вкл `DropdownMenu`)
