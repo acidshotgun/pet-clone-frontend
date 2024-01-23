@@ -1,0 +1,10 @@
+@import "../../styles/variables.scss";
+
+.wrapper {
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: $light_gray;
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../../styles/variables.scss";
+
+.container {
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  .name {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 100%;
+      background-color: $white;
+    }
+  }
+}

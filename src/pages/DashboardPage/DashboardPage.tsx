@@ -36,6 +36,29 @@ const discissionsData = [
   },
 ];
 
+const contactsData = [
+  {
+    logo: "",
+    name: "@acidshotgun",
+    role: "Community creator",
+  },
+  {
+    logo: "",
+    name: "@acidshotgun",
+    role: "Community creator",
+  },
+  {
+    logo: "",
+    name: "@acidshotgun",
+    role: "Community creator",
+  },
+  {
+    logo: "",
+    name: "@acidshotgun",
+    role: "Community creator",
+  },
+];
+
 const DashboardPage = () => {
   // ЭТО вар, где я буду рендерить посты, когда их будет много
   // const leftSide = (
@@ -63,7 +86,7 @@ const DashboardPage = () => {
     <>
       <DashboardProfile />
       <DiscussionsList discussionsData={discissionsData} />
-      <Contacts />
+      <Contacts contactsData={contactsData} />
     </>
   );
 
