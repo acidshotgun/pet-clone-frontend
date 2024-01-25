@@ -6,7 +6,10 @@ import Post from "../../components/Post/Post";
 import DashboardHeader from "../../components/DashboardHeader/DashboardHeader";
 import DashboardProfile from "../../components/DashboardProfile/DashboardProfile";
 
+import axios from "../../services/axiosConfig";
+
 import LayoutPage from "../../components/Layout/PageLayout/PageLayout";
+import { useEffect } from "react";
 
 const discissionsData = [
   {
@@ -36,30 +39,13 @@ const discissionsData = [
   },
 ];
 
-const contactsData = [
-  {
-    logo: "",
-    name: "@acidshotgun",
-    role: "Community creator",
-  },
-  {
-    logo: "",
-    name: "@acidshotgun",
-    role: "Community creator",
-  },
-  {
-    logo: "",
-    name: "@acidshotgun",
-    role: "Community creator",
-  },
-  {
-    logo: "",
-    name: "@acidshotgun",
-    role: "Community creator",
-  },
-];
-
 const DashboardPage = () => {
+  useEffect(() => {
+    axios
+      .get("/dashboards/65532f0aaefa02bf24aa5873")
+      .then((res) => console.log(res));
+  });
+
   // ЭТО вар, где я буду рендерить посты, когда их будет много
   // const leftSide = (
   //   <>
@@ -86,7 +72,7 @@ const DashboardPage = () => {
     <>
       <DashboardProfile />
       <DiscussionsList discussionsData={discissionsData} />
-      <Contacts contactsData={contactsData} />
+      <Contacts />
     </>
   );
 
