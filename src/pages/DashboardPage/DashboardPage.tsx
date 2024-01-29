@@ -47,9 +47,7 @@ const DashboardPage = () => {
   const { dashboardId } = useParams();
 
   useEffect(() => {
-    request(`/dashboard/:${dashboardId}`, "GET").then((res) =>
-      console.log(res)
-    );
+    request(`/dashboard/${dashboardId}`, "GET").then((res) => console.log(res));
   }, []);
 
   // console.log(dashboardId);
