@@ -40,8 +40,19 @@ const discissionsData = [
   },
 ];
 
+interface DashboardData {
+  pinnedPosts: any[]; // Замените any на реальный тип вашего поста
+  logoUrl: string;
+  dashboardName: string;
+  createdPosts: any[]; // Замените any на реальный тип вашего поста
+  description: string;
+  createdAt: string; // Предположим, что это строка с датой
+  backgroundUrl: string;
+}
+
 const DashboardPage = () => {
-  const [dasboardPageData, setDashboardPageData] = useState(null);
+  const [dasboardPageData, setDashboardPageData] =
+    useState<DashboardData | null>(null);
   const { request, loading, error } = useHttp();
   const { dashboardId } = useParams();
 
@@ -57,7 +68,10 @@ const DashboardPage = () => {
 
   const leftSide = (
     <>
-      {dasboardPageData?.pinnedPosts.length > 0 ? <PinnedPosts /> : null}
+      {dasboardPageData?.pinnedPosts &&
+      dasboardPageData?.pinnedPosts.length > 0 ? (
+        <PinnedPosts />
+      ) : null}
       <SortPosts />
       {dasboardPageData?.createdPosts.map((item: any, i: any) => {
         return (
