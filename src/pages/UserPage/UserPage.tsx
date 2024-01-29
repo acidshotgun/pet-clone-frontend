@@ -5,17 +5,11 @@ import CreatePost from "../../components/CreatePost/CreatePost";
 import SortPosts from "../../components/SortPosts/SortPosts";
 import Post from "../../components/Post/Post";
 
-import PageLayout from "../../components/Layout/PageLayout/PageLayout";
+import { useState, useEffect } from "react";
+import { useHttp } from "../../hooks/useRequest";
+import { useParams } from "react-router-dom";
 
-const fakeData = {
-  backgroundImage:
-    "https://i.pinimg.com/564x/6c/12/44/6c1244d7d3458fb996921f86e181c1ae.jpg",
-  nickName: "acidshotgun",
-  avatarUrl:
-    "https://i.pinimg.com/564x/27/d1/03/27d1032d285f26f60a7e3881d9d0da4b.jpg",
-  descr:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-};
+import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 
 const fakeBoard = [
   {
@@ -52,44 +46,79 @@ const fakeBoard = [
   },
 ];
 
+interface UserData {
+  pinnedPosts: any[];
+  logoUrl: string;
+  createdPosts: any[];
+  description: string;
+  createdAt: string;
+  backgroundImage?: string;
+  nickName: string;
+  avatarUrl: string;
+  subscribers: any[];
+  subscriptions: any[];
+  name: any;
+}
+
+// Типизация неясна!!! Пока везде any
 const UserPage = () => {
+  const [userPageData, setUserPageData] = useState<UserData | null>(null);
+  const { request, loading, error } = useHttp();
+  const { userId } = useParams();
   const isAuth = true;
 
-  // ЭТО вар, где я буду рендерить посты, когда их будет много
-  // const leftSide = (
-  //   <>
-  //     <PinnedPosts />
-  //     {isAuth && <CreatePost />}
-  //     <SortPosts />
-  //     {dataArray.map((item) => {
-  //       return <Post image={item.pic} />;
-  //     })}
-  //   </>
-  // );
+  useEffect(() => {
+    request(`/users/${userId}`, "GET").then((res: any) =>
+      setUserPageData(res.data)
+    );
+  }, []);
+
+  useEffect(() => {
+    console.log(userPageData);
+  }, [userPageData]);
 
   const leftSide = (
     <>
       <PinnedPosts />
       {isAuth && <CreatePost />}
-      <SortPosts />
-      <Post image="https://www.zastavki.com/pictures/1920x1080/2012/Widescreen_Russian_dolls_035029_.jpg" />
-      <Post image="https://i.pinimg.com/564x/5f/84/35/5f8435b830ff436032cd1d53b0f3fdf6.jpg" />
-      <Post image="https://i.pinimg.com/564x/9b/36/4e/9b364eed8278ff1abbc73d551df929b0.jpg" />
+      <>
+        {/* {dasboardPageData?.createdPosts &&
+          dasboardPageData.createdPosts?.length > 0 && <SortPosts />} */}
+        {userPageData?.createdPosts && userPageData.createdPosts?.length > 0 ? (
+          <SortPosts />
+        ) : (
+          <h1>ПОстов пока нет</h1>
+        )}
+        {userPageData?.createdPosts.map((item: any, i: any) => {
+          return (
+            <Post
+              logoUrl={userPageData?.avatarUrl}
+              name={userPageData?.nickName}
+              postData={item}
+              key={i}
+            />
+          );
+        })}
+      </>
     </>
   );
 
   const rightSide = (
     <>
       <UserProfile
-        backgroundImage={fakeData.backgroundImage}
-        nickName={fakeData.nickName}
-        avatarUrl={fakeData.avatarUrl}
-        descr={fakeData.descr}
+        backgroundImage={userPageData?.backgroundImage}
+        nickName={userPageData?.nickName}
+        avatarUrl={userPageData?.avatarUrl}
+        subscribers={userPageData?.subscribers}
+        subscriptions={userPageData?.subscriptions}
       />
       <DashboardsList data={fakeBoard} />
     </>
   );
 
+  if (loading) {
+    return <h1>ЗАГРУЗКА</h1>;
+  }
   return <PageLayout leftSide={leftSide} rightSide={rightSide}></PageLayout>;
 };
 

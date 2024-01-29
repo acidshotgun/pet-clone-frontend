@@ -48,6 +48,7 @@ interface DashboardData {
   description: string;
   createdAt: string; // Предположим, что это строка с датой
   backgroundUrl: string;
+  admins: string[];
 }
 
 const DashboardPage = () => {
@@ -72,17 +73,26 @@ const DashboardPage = () => {
       dasboardPageData?.pinnedPosts.length > 0 ? (
         <PinnedPosts />
       ) : null}
-      <SortPosts />
-      {dasboardPageData?.createdPosts.map((item: any, i: any) => {
-        return (
-          <Post
-            logoUrl={dasboardPageData?.logoUrl}
-            dashboardName={dasboardPageData?.dashboardName}
-            postData={item}
-            key={i}
-          />
-        );
-      })}
+      <>
+        {/* {dasboardPageData?.createdPosts &&
+          dasboardPageData.createdPosts?.length > 0 && <SortPosts />} */}
+        {dasboardPageData?.createdPosts &&
+        dasboardPageData.createdPosts?.length > 0 ? (
+          <SortPosts />
+        ) : (
+          <h1>ПОстов пока нет</h1>
+        )}
+        {dasboardPageData?.createdPosts.map((item: any, i: any) => {
+          return (
+            <Post
+              logoUrl={dasboardPageData?.logoUrl}
+              name={dasboardPageData?.dashboardName}
+              postData={item}
+              key={i}
+            />
+          );
+        })}
+      </>
     </>
   );
 
@@ -93,7 +103,7 @@ const DashboardPage = () => {
         createdAt={dasboardPageData?.createdAt}
       />
       <DiscussionsList discussionsData={discissionsData} />
-      <Contacts />
+      <Contacts admins={dasboardPageData?.admins} />
     </>
   );
 

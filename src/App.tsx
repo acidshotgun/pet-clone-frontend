@@ -14,7 +14,7 @@ const App = () => {
         <Header />
         <div className={styles.container}>
           <Routes>
-            <Route path="/:userId" element={<UserPage />} />
+            <Route path="/users/:userId" element={<UserPage />} />
             <Route
               path="/dashboards/:dashboardId"
               element={<DashboardPage />}

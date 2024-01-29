@@ -15,7 +15,7 @@ import styles from "./Post.module.scss";
 //   image?: string;
 // }
 
-const Post = ({ postData, dashboardName, logoUrl }: any) => {
+const Post = ({ postData, name, logoUrl }: any) => {
   return (
     <ComponentLayout>
       <div className={styles.wrapper}>
@@ -25,7 +25,7 @@ const Post = ({ postData, dashboardName, logoUrl }: any) => {
               <img src={logoUrl} alt="avatar"></img>
             </div>
             <div className={styles.info}>
-              <span className={styles.name}>{dashboardName}</span>
+              <span className={styles.name}>{name}</span>
               <span className={styles.date}>{postData.createdAt}</span>
             </div>
           </div>

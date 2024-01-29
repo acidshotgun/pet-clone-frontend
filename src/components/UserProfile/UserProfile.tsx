@@ -10,23 +10,28 @@ import styles from "./UserProfile.module.scss";
 
 interface IUserProfile {
   backgroundImage: string | undefined;
-  nickName: string;
+  nickName: string | undefined;
   avatarUrl: string | undefined;
-  descr: string | undefined;
+  subscribers: any;
+  subscriptions: any;
 }
 
 const UserProfile = ({
   backgroundImage,
   nickName,
   avatarUrl,
-  descr,
+  subscribers,
+  subscriptions,
 }: IUserProfile) => {
   const isAuth = true;
 
   return (
     <>
       <div className={styles.backgrounImage}>
-        <img src={backgroundImage} alt="#"></img>
+        <img
+          src="https://mobile.photoprocenter.ru/files/201503021635595970_0.jpg"
+          alt="#"
+        ></img>
       </div>
       <ComponentLayout>
         <div className={styles.information}>
@@ -34,10 +39,10 @@ const UserProfile = ({
             <LogoImage image={avatarUrl} />
             <span className={styles.userName}>@{nickName}</span>
           </div>
-          <div className={styles.subs}>
-            <span className={styles.subsItem}>1000 Subscribers</span>
-            <span className={styles.subsItem}>200 Subscriptions</span>
-          </div>
+          {/* <div className={styles.subs}>
+            <span className={styles.subsItem}>{subscribers.length}</span>
+            <span className={styles.subsItem}>{subscriptions.length}</span>
+          </div> */}
 
           <div className={styles.about}>
             <hr />
@@ -67,10 +72,16 @@ const UserProfile = ({
 
             <hr />
             <div className={styles.userDescr}>
-              <p>{descr}</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptate reiciendis odit vitae officia neque. Voluptas ea
+                aperiam a fugiat iste exercitationem nemo consequuntur debitis
+                dicta quidem accusamus, sunt laborum ipsam.
+              </p>
             </div>
             <hr />
-            <ul className={styles.socials}>
+
+            {/* <ul className={styles.socials}>
               <li>
                 <img src={inst} alt="inst"></img>
                 <a href="#">acidshotgun</a>
@@ -80,9 +91,9 @@ const UserProfile = ({
                 <a href="#">https://vk.com/serega_pirat</a>
               </li>
             </ul>
-            <hr />
+            <hr /> */}
 
-            <div className={styles.bio}>
+            {/* <div className={styles.bio}>
               <div className={styles.bioElement}>
                 <span className={styles.name}>Country</span>
                 <div className={styles.point}></div>
@@ -98,7 +109,7 @@ const UserProfile = ({
                 <div className={styles.point}></div>
                 <span className={styles.value}>English</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </ComponentLayout>
