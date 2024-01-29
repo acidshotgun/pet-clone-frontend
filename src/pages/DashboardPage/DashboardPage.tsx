@@ -7,9 +7,11 @@ import DashboardHeader from "../../components/DashboardHeader/DashboardHeader";
 import DashboardProfile from "../../components/DashboardProfile/DashboardProfile";
 
 import axios from "../../services/axiosConfig";
+import { useState, useEffect } from "react";
+import { useHttp } from "../../hooks/useRequest";
+import { useParams } from "react-router-dom";
 
 import LayoutPage from "../../components/Layout/PageLayout/PageLayout";
-import { useEffect } from "react";
 
 const discissionsData = [
   {
@@ -40,11 +42,29 @@ const discissionsData = [
 ];
 
 const DashboardPage = () => {
+  const [dasboardPageData, setDashboardPageData] = useState(null);
+  const { request, loading, error } = useHttp();
+  const { dashboardId } = useParams();
+
   useEffect(() => {
-    axios
-      .get("/dashboards/65532f0aaefa02bf24aa5873")
-      .then((res) => console.log(res));
-  });
+    request(`/dashboard/:${dashboardId}`, "GET").then((res) =>
+      console.log(res)
+    );
+  }, []);
+
+  // console.log(dashboardId);
+  // const [isLoad, setIsLoad] = useState(false);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("/dashboards/65532f0aaefa02bf24aa5873")
+  //     .then((res) => onDataLoaded(res));
+  // });
+
+  // const onDataLoaded = (data: any) => {
+  //   console.log(data);
+  //   setIsLoad(true);
+  // };
 
   // ЭТО вар, где я буду рендерить посты, когда их будет много
   // const leftSide = (
@@ -75,6 +95,10 @@ const DashboardPage = () => {
       <Contacts />
     </>
   );
+
+  // if (!isLoad) {
+  //   return <h1>ЗАГРУЗКА</h1>;
+  // }
 
   return (
     <>

@@ -23,7 +23,7 @@ const DiscussionsList = ({ discussionsData }: any) => {
       </ul>
       <div className={styles.footer}>
         <Link to="/dashboard/id123123/discussions">
-          <span className={styles.more}>See all 201 dashboards</span>
+          <span className={styles.more}>See all 201 discussions</span>
           <div className={styles.line}></div>
         </Link>
       </div>

@@ -14,8 +14,8 @@ const App = () => {
         <Header />
         <div className={styles.container}>
           <Routes>
-            <Route path="/" element={<UserPage />} />
-            <Route path="/dashboard/:id" element={<DashboardPage />} />
+            <Route path="/:userId" element={<UserPage />} />
+            <Route path="/dashboard/:dashboardId" element={<DashboardPage />} />
           </Routes>
         </div>
       </Router>
