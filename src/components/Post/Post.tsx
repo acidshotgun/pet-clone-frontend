@@ -8,25 +8,25 @@ import eye from "./icons/eye.svg";
 
 import styles from "./Post.module.scss";
 
-interface IPost {
-  image?: string;
-}
+// interface IPost {
+//   author: string;
+//   comments: string[];
+//   createdAt: string
+//   image?: string;
+// }
 
-const Post = ({ image }: IPost) => {
+const Post = ({ postData, dashboardName, logoUrl }: any) => {
   return (
     <ComponentLayout>
       <div className={styles.wrapper}>
         <div className={styles.authorInfo}>
           <div className={styles.leftSide}>
             <div className={styles.avatar}>
-              <img
-                src="https://i.pinimg.com/564x/27/d1/03/27d1032d285f26f60a7e3881d9d0da4b.jpg"
-                alt="avatar"
-              ></img>
+              <img src={logoUrl} alt="avatar"></img>
             </div>
             <div className={styles.info}>
-              <span className={styles.name}>@acidshotgun</span>
-              <span className={styles.date}>23 окт. в 22:30</span>
+              <span className={styles.name}>{dashboardName}</span>
+              <span className={styles.date}>{postData.createdAt}</span>
             </div>
           </div>
           <div className={styles.rightSide}>
@@ -35,22 +35,24 @@ const Post = ({ image }: IPost) => {
         </div>
 
         <div className={styles.postDescr}>
-          <span className={styles.postName}>Заголовок созданного поста</span>
-          <span className={styles.postTags}>#sci-fi,#cyberpunk,#web,#art</span>
+          <span className={styles.postName}>{postData.title}</span>
+          <span className={styles.postTags}>{postData.tags}</span>
         </div>
         <div className={styles.postImage}>
-          <img src={image} alt="postImage" />
+          {postData.imageUrl ? (
+            <img src={postData.imageUrl} alt="postImage" />
+          ) : null}
         </div>
 
         <div className={styles.downMenu}>
           <div className={styles.left}>
             <button className={styles.socialBtn}>
               <img src={likes} alt="icon" />
-              <span className={styles.btnText}>23 Likes</span>
+              <span className={styles.btnText}>{postData.likesCounter}</span>
             </button>
             <button className={styles.socialBtn}>
               <img src={comments} alt="icon" />
-              <span className={styles.btnText}>42 Comments</span>
+              <span className={styles.btnText}>{postData.comments.length}</span>
             </button>
             <button className={styles.socialBtn}>
               <img src={share} alt="icon" />
@@ -61,7 +63,7 @@ const Post = ({ image }: IPost) => {
             <div className={styles.viewsIcon}>
               <img src={eye} alt="views" />
             </div>
-            <span className={styles.viewsCount}>678</span>
+            <span className={styles.viewsCount}>{postData.viewCounter}</span>
           </div>
         </div>
       </div>

@@ -1,24 +1,21 @@
 import ComponentLayout from "../Layout/ComponentLayout/ComponentLayout";
 import Button from "../Button/Button";
 
-import createdAt from "../../images/icons/CreatedAt.svg";
+import createdAtIcon from "../../images/icons/CreatedAt.svg";
 import messages from "../../images/icons/messages.svg";
 import styles from "./DashboardProfile.module.scss";
 
-const DashboardProfile = () => {
+const DashboardProfile = ({ description, createdAt }: any) => {
   const isAuth = false;
 
   return (
     <ComponentLayout description="About community">
       <div className={styles.information}>
         <div className={styles.dashboardDescription}>
-          <p className={styles.text}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
+          <p className={styles.text}>{description}</p>
           <div className={styles.createdAt}>
-            <img src={createdAt} alt="icon"></img>
-            <span className={styles.date}>Created Dec 12, 2022</span>
+            <img src={createdAtIcon} alt="icon"></img>
+            <span className={styles.date}>{createdAt}</span>
           </div>
         </div>
         <hr></hr>
