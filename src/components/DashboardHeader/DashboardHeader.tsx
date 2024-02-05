@@ -16,10 +16,15 @@ const DashboardHeader = ({
   dashboardName,
   link,
 }: IDashboardHeader) => {
+  console.log(backgroundImage);
   return (
     <div className={styles.wrapper}>
       <div className={styles.backgroundImage}>
-        <img src={backgroundImage} alt="bg"></img>
+        {backgroundImage?.length === undefined ? (
+          <div className={styles.no_image}></div>
+        ) : (
+          <img src={backgroundImage} alt="bg"></img>
+        )}
       </div>
       <div className={styles.info}>
         <div className={styles.dasboardAvatar}>

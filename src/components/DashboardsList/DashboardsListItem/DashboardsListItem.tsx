@@ -19,7 +19,7 @@ const DashboardsListItem = ({
 }: IDashboardsListItem) => {
   return (
     <li className={styles.dashboard}>
-      <Link to={`/dashboard/${boardLink}`} className={styles.link}>
+      <Link to={`/dashboards/${boardLink}`} className={styles.link}>
         <div className={styles.image}>
           <img src={image} alt="pic"></img>
         </div>

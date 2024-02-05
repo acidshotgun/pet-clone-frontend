@@ -5,12 +5,11 @@ import SortPosts from "../../components/SortPosts/SortPosts";
 import Post from "../../components/Post/Post";
 import DashboardHeader from "../../components/DashboardHeader/DashboardHeader";
 import DashboardProfile from "../../components/DashboardProfile/DashboardProfile";
+import LayoutPage from "../../components/Layout/PageLayout/PageLayout";
 
 import { useState, useEffect } from "react";
 import { useHttp } from "../../hooks/useRequest";
 import { useParams } from "react-router-dom";
-
-import LayoutPage from "../../components/Layout/PageLayout/PageLayout";
 
 const discissionsData = [
   {
@@ -40,20 +39,33 @@ const discissionsData = [
   },
 ];
 
-interface DashboardData {
-  pinnedPosts: any[]; // Замените any на реальный тип вашего поста
+interface ICreatedPostItem {
+  author: string;
+  comments: string[];
+  createdAt: string;
+  imageUrl: string;
+  likesCounter: number;
+  tags: string[];
+  text: string;
+  title: string;
+  updatedAt: string;
+  viewCounter: number;
+}
+
+interface IDashboardData {
+  pinnedPosts: [];
   logoUrl: string;
   dashboardName: string;
-  createdPosts: any[]; // Замените any на реальный тип вашего поста
+  createdPosts: ICreatedPostItem[];
   description: string;
-  createdAt: string; // Предположим, что это строка с датой
+  createdAt: string;
   backgroundUrl: string;
   admins: string[];
 }
 
 const DashboardPage = () => {
   const [dasboardPageData, setDashboardPageData] =
-    useState<DashboardData | null>(null);
+    useState<IDashboardData | null>(null);
   const { request, loading, error } = useHttp();
   const { dashboardId } = useParams();
 
@@ -63,36 +75,31 @@ const DashboardPage = () => {
     );
   }, []);
 
-  useEffect(() => {
-    console.log(dasboardPageData);
-  }, [dasboardPageData]);
-
   const leftSide = (
     <>
-      {dasboardPageData?.pinnedPosts &&
-      dasboardPageData?.pinnedPosts.length > 0 ? (
+      {/* {dasboardPageData && dasboardPageData.pinnedPosts.length > 0 ? (
         <PinnedPosts />
-      ) : null}
-      <>
-        {/* {dasboardPageData?.createdPosts &&
-          dasboardPageData.createdPosts?.length > 0 && <SortPosts />} */}
-        {dasboardPageData?.createdPosts &&
-        dasboardPageData.createdPosts?.length > 0 ? (
+      ) : null} */}
+
+      <PinnedPosts />
+
+      {dasboardPageData && dasboardPageData.createdPosts.length > 0 ? (
+        <>
           <SortPosts />
-        ) : (
-          <h1>ПОстов пока нет</h1>
-        )}
-        {dasboardPageData?.createdPosts.map((item: any, i: any) => {
-          return (
-            <Post
-              logoUrl={dasboardPageData?.logoUrl}
-              name={dasboardPageData?.dashboardName}
-              postData={item}
-              key={i}
-            />
-          );
-        })}
-      </>
+          {dasboardPageData.createdPosts.map((createdPostitem, i) => {
+            return (
+              <Post
+                logoUrl={dasboardPageData.logoUrl}
+                name={dasboardPageData.dashboardName}
+                postData={createdPostitem}
+                key={i}
+              />
+            );
+          })}
+        </>
+      ) : (
+        <h1>Постов пока нет</h1>
+      )}
     </>
   );
 

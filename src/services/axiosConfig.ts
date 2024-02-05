@@ -8,7 +8,8 @@ import axios from "axios";
 //    1) Базовый url по которому будет идти запрос
 // К нему уже будут подставлять роуты = не надо прописывать роут полность.
 const request = axios.create({
-  baseURL: "http://94.241.171.46:4444",
+  // baseURL: "http://94.241.171.46:4444",
+  baseURL: "http://localhost:4444",
 });
 
 // Тут добавляем к нашему запросу перехватчик запросов (interceptors.request)

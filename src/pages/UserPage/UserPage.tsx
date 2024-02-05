@@ -18,7 +18,7 @@ const fakeBoard = [
       "https://i.pinimg.com/564x/78/7f/56/787f56daf00fc04d0b75c2d7c6f4422f.jpg",
     boardId: "@comm_name",
     descr: "Some descr ;))",
-    boardLink: "id123123",
+    boardLink: "65532f0aaefa02bf24aa5873",
   },
   {
     name: "Имя сообщества",
@@ -26,7 +26,7 @@ const fakeBoard = [
       "https://i.pinimg.com/564x/78/7f/56/787f56daf00fc04d0b75c2d7c6f4422f.jpg",
     boardId: "@comm_name",
     descr: "Some descr ;))",
-    boardLink: "id123123",
+    boardLink: "65532f0aaefa02bf24aa5873",
   },
   {
     name: "Имя сообщества",
@@ -34,7 +34,7 @@ const fakeBoard = [
       "https://i.pinimg.com/564x/78/7f/56/787f56daf00fc04d0b75c2d7c6f4422f.jpg",
     boardId: "@comm_name",
     descr: "Some descr ;))",
-    boardLink: "id123123",
+    boardLink: "65532f0aaefa02bf24aa5873",
   },
   {
     name: "Имя сообщества",
@@ -42,14 +42,27 @@ const fakeBoard = [
       "https://i.pinimg.com/564x/78/7f/56/787f56daf00fc04d0b75c2d7c6f4422f.jpg",
     boardId: "@comm_name",
     descr: "Some descr ;))",
-    boardLink: "id123123",
+    boardLink: "65532f0aaefa02bf24aa5873",
   },
 ];
 
+interface ICreatedPostItem {
+  author: string;
+  comments: string[];
+  createdAt: string;
+  imageUrl: string;
+  likesCounter: number;
+  tags: string[];
+  text: string;
+  title: string;
+  updatedAt: string;
+  viewCounter: number;
+}
+
 interface UserData {
-  pinnedPosts: any[];
+  pinnedPosts: [];
   logoUrl: string;
-  createdPosts: any[];
+  createdPosts: ICreatedPostItem[];
   description: string;
   createdAt: string;
   backgroundImage?: string;
@@ -58,9 +71,9 @@ interface UserData {
   subscribers: any[];
   subscriptions: any[];
   name: any;
+  subscribedDashboards: any[];
 }
 
-// Типизация неясна!!! Пока везде any
 const UserPage = () => {
   const [userPageData, setUserPageData] = useState<UserData | null>(null);
   const { request, loading, error } = useHttp();
@@ -73,33 +86,28 @@ const UserPage = () => {
     );
   }, []);
 
-  useEffect(() => {
-    console.log(userPageData);
-  }, [userPageData]);
-
   const leftSide = (
     <>
       <PinnedPosts />
       {isAuth && <CreatePost />}
-      <>
-        {/* {dasboardPageData?.createdPosts &&
-          dasboardPageData.createdPosts?.length > 0 && <SortPosts />} */}
-        {userPageData?.createdPosts && userPageData.createdPosts?.length > 0 ? (
+
+      {userPageData && userPageData.createdPosts?.length > 0 ? (
+        <>
           <SortPosts />
-        ) : (
-          <h1>ПОстов пока нет</h1>
-        )}
-        {userPageData?.createdPosts.map((item: any, i: any) => {
-          return (
-            <Post
-              logoUrl={userPageData?.avatarUrl}
-              name={userPageData?.nickName}
-              postData={item}
-              key={i}
-            />
-          );
-        })}
-      </>
+          {userPageData.createdPosts.map((createdPostitem, i) => {
+            return (
+              <Post
+                logoUrl={userPageData.avatarUrl}
+                name={userPageData.nickName}
+                postData={createdPostitem}
+                key={i}
+              />
+            );
+          })}
+        </>
+      ) : (
+        <h1>ПОстов пока нет</h1>
+      )}
     </>
   );
 
@@ -112,7 +120,7 @@ const UserPage = () => {
         subscribers={userPageData?.subscribers}
         subscriptions={userPageData?.subscriptions}
       />
-      <DashboardsList data={fakeBoard} />
+      <DashboardsList data={userPageData?.subscribedDashboards} />
     </>
   );
 
