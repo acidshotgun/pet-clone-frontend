@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 
 // Pages
+import Registration from "./pages/Registration/Registration";
 import UserPage from "./pages/UserPage/UserPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 
@@ -19,6 +20,7 @@ const App = () => {
               path="/dashboards/:dashboardId"
               element={<DashboardPage />}
             />
+            <Route path="/register" element={<Registration />} />
           </Routes>
         </div>
       </Router>

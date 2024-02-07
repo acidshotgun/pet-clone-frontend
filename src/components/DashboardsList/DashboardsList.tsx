@@ -4,28 +4,27 @@ import DashboardsListItem from "./DashboardsListItem/DashboardsListItem";
 
 import styles from "./Dashboard.module.scss";
 
-const DashboardsList = ({ data }: any) => {
+const DashboardsList = ({ data, isLoading }: any) => {
   // Ограничивает массив 4 элементами
   // const limitedBoards = data.slice(0, 4);
-
-  console.log(data);
 
   return (
     <ComponentLayout description="Dashboards">
       <ul className={styles.list}>
-        {data &&
-          data.map((item: any, i: any) => {
-            return (
-              <DashboardsListItem
-                key={i}
-                name={item.dashboardName.slice(0, 15)}
-                image={item.logoUrl}
-                boardId={"@some_id"}
-                descr={item.description.slice(0, 30)}
-                boardLink={item._id}
-              />
-            );
-          })}
+        {data
+          ? data.map((item: any, i: any) => {
+              return (
+                <DashboardsListItem
+                  key={i}
+                  name={item.dashboardName.slice(0, 15)}
+                  image={item.logoUrl}
+                  boardId={"@some_id"}
+                  descr={item.description.slice(0, 30)}
+                  boardLink={item._id}
+                />
+              );
+            })
+          : null}
       </ul>
       <div className={styles.footer}>
         <Link to="/user/dashboards">

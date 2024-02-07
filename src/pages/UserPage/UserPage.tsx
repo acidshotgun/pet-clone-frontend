@@ -120,13 +120,19 @@ const UserPage = () => {
         subscribers={userPageData?.subscribers}
         subscriptions={userPageData?.subscriptions}
       />
-      <DashboardsList data={userPageData?.subscribedDashboards} />
+      <DashboardsList
+        data={userPageData?.subscribedDashboards}
+        isLoading={loading}
+      />
     </>
   );
+
+  console.log(loading);
 
   if (loading) {
     return <h1>ЗАГРУЗКА</h1>;
   }
+
   return <PageLayout leftSide={leftSide} rightSide={rightSide}></PageLayout>;
 };
 
