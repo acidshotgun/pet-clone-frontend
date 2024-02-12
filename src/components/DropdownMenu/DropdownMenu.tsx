@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/slices/auth";
 
 import arrow from "../../images/icons/arrow.png";
 import styles from "./DropdownMenu.module.scss";
@@ -19,6 +21,7 @@ const DropdownMenu = ({
   align,
 }: IDropdownMenu) => {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const openMenu = () => {
     setOpen(!open);
@@ -33,12 +36,17 @@ const DropdownMenu = ({
       }
     };
 
-    document.addEventListener("mousedown", handler);
+    document.addEventListener("click", handler);
 
     return () => {
-      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("click", handler);
     };
   });
+
+  const onHandleLogout = () => {
+    dispatch(logout());
+    window.localStorage.removeItem("token");
+  };
 
   return (
     <div className={styles.dropdownContainer}>
@@ -71,7 +79,7 @@ const DropdownMenu = ({
             return item.name === "separator" ? (
               <hr className={styles.separator} key={i}></hr>
             ) : (
-              <li className={styles.listItem} key={i} onClick={openMenu}>
+              <li className={styles.listItem} key={i}>
                 <a href={item.link}>
                   {item.icon && (
                     <img
@@ -85,6 +93,9 @@ const DropdownMenu = ({
               </li>
             );
           })}
+          <li className={styles.listItem} onClick={onHandleLogout}>
+            <span className={styles.link}>Log out</span>
+          </li>
         </ul>
       </div>
     </div>

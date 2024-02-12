@@ -17,7 +17,11 @@ export const fetchRegister: any = createAsyncThunk(
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.data = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchRegister.pending, (state) => {
       state.status = "loading";
@@ -36,6 +40,9 @@ const authSlice = createSlice({
 const { actions, reducer } = authSlice;
 
 // export const selectIsAuth = (state: any) => Boolean(state.auth.data);
-export const selectUserId = (state: any) => state.auth.data?._id;
+export const selectIsAuth = (state: any) => state.auth.data?._id;
 
 export const authReducer = reducer;
+
+// Выход из акка (очистить стейт user)
+export const { logout } = actions;

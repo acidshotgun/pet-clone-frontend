@@ -5,6 +5,7 @@
   gap: 5px;
   align-items: center;
   height: 34px;
+  // height: 100%;
   border: none;
   border-radius: 50px;
   font-size: 12px;
@@ -38,6 +39,8 @@
 
 .white_button {
   background-color: $white;
+  padding-left: 17px;
+  padding-right: 17px;
 }
 
 .grey_button {

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchRegister,
   // selectIsAuth,
-  selectUserId,
+  selectIsAuth,
 } from "../../redux/slices/auth";
 
 import ComponentLayout from "../../components/Layout/ComponentLayout/ComponentLayout";
@@ -23,7 +23,7 @@ const Registration = () => {
 
   const dispatch = useDispatch();
   // const isAuth = useSelector(selectIsAuth);
-  const userId = useSelector(selectUserId);
+  const isAuth = useSelector(selectIsAuth);
 
   const onHandleChange = (e: any) => {
     const { name, value } = e.target;
@@ -45,8 +45,8 @@ const Registration = () => {
     }
   };
 
-  if (Boolean(userId)) {
-    return <Navigate to={`/users/${userId}`} />;
+  if (Boolean(isAuth)) {
+    return <Navigate to={`/users/${isAuth}`} />;
   }
 
   return (

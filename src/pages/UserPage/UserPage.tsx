@@ -11,41 +11,6 @@ import { useParams } from "react-router-dom";
 
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 
-const fakeBoard = [
-  {
-    name: "Имя сообщества",
-    image:
-      "https://i.pinimg.com/564x/78/7f/56/787f56daf00fc04d0b75c2d7c6f4422f.jpg",
-    boardId: "@comm_name",
-    descr: "Some descr ;))",
-    boardLink: "65532f0aaefa02bf24aa5873",
-  },
-  {
-    name: "Имя сообщества",
-    image:
-      "https://i.pinimg.com/564x/78/7f/56/787f56daf00fc04d0b75c2d7c6f4422f.jpg",
-    boardId: "@comm_name",
-    descr: "Some descr ;))",
-    boardLink: "65532f0aaefa02bf24aa5873",
-  },
-  {
-    name: "Имя сообщества",
-    image:
-      "https://i.pinimg.com/564x/78/7f/56/787f56daf00fc04d0b75c2d7c6f4422f.jpg",
-    boardId: "@comm_name",
-    descr: "Some descr ;))",
-    boardLink: "65532f0aaefa02bf24aa5873",
-  },
-  {
-    name: "Имя сообщества",
-    image:
-      "https://i.pinimg.com/564x/78/7f/56/787f56daf00fc04d0b75c2d7c6f4422f.jpg",
-    boardId: "@comm_name",
-    descr: "Some descr ;))",
-    boardLink: "65532f0aaefa02bf24aa5873",
-  },
-];
-
 interface ICreatedPostItem {
   author: string;
   comments: string[];
@@ -126,8 +91,6 @@ const UserPage = () => {
       />
     </>
   );
-
-  console.log(loading);
 
   if (loading) {
     return <h1>ЗАГРУЗКА</h1>;

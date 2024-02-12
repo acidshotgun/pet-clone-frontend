@@ -1,5 +1,10 @@
+import { useSelector } from "react-redux";
+import { selectIsAuth } from "../../redux/slices/auth";
+import { Link } from "react-router-dom";
+// Components
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import Search from "../Search/Search";
+import Button from "../Button/Button";
 import { SETTINGS_MENU, LINKS_MENU } from "./header.data";
 
 import logo from "../../images/logo.png";
@@ -7,6 +12,8 @@ import logo from "../../images/logo.png";
 import styles from "./Header.module.scss";
 
 const Header = () => {
+  const isAuth = useSelector(selectIsAuth);
+
   return (
     <header>
       <div className={styles.container}>
@@ -28,17 +35,27 @@ const Header = () => {
 
         <Search />
 
-        <div>
-          <DropdownMenu
-            content={SETTINGS_MENU}
-            picture={
-              "https://i.pinimg.com/564x/27/d1/03/27d1032d285f26f60a7e3881d9d0da4b.jpg"
-            }
-            pictureType="square"
-            text={"@user_name"}
-            align={"right"}
-          />
-        </div>
+        <>
+          {window.localStorage.getItem("token") && isAuth ? (
+            <DropdownMenu
+              content={SETTINGS_MENU}
+              picture={
+                "https://i.pinimg.com/564x/27/d1/03/27d1032d285f26f60a7e3881d9d0da4b.jpg"
+              }
+              pictureType="square"
+              text={"@user_name"}
+              align={"right"}
+            />
+          ) : (
+            <div className={styles.auth}>
+              <Button text="Log in" type="grey_button" />
+
+              <Link to="/registration">
+                <Button text="Sign up" type="white_button" />
+              </Link>
+            </div>
+          )}
+        </>
       </div>
     </header>
   );
