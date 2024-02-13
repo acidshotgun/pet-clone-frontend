@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { selectIsAuth } from "../../redux/slices/auth";
 import { Link } from "react-router-dom";
+
 // Components
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import Search from "../Search/Search";

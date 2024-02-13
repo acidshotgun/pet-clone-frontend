@@ -5,7 +5,9 @@ import SortPosts from "../../components/SortPosts/SortPosts";
 import Post from "../../components/Post/Post";
 import DashboardHeader from "../../components/DashboardHeader/DashboardHeader";
 import DashboardProfile from "../../components/DashboardProfile/DashboardProfile";
+
 import LayoutPage from "../../components/Layout/PageLayout/PageLayout";
+import Page404 from "../404/Page404";
 
 import { useState, useEffect } from "react";
 import { useHttp } from "../../hooks/useRequest";
@@ -71,7 +73,7 @@ const DashboardPage = () => {
 
   useEffect(() => {
     request(`/dashboards/${dashboardId}`, "GET").then((res: any) =>
-      setDashboardPageData(res.data)
+      setDashboardPageData(res?.data)
     );
   }, []);
 
@@ -116,6 +118,10 @@ const DashboardPage = () => {
 
   if (loading) {
     return <h1>ЗАГРУЗКА</h1>;
+  }
+
+  if (!dasboardPageData) {
+    return <Page404 />;
   }
 
   return (

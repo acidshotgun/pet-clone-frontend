@@ -1,5 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchAuth } from "./redux/slices/auth";
+
+// Components
 import Header from "./components/Header/Header";
 
 // Pages
@@ -11,10 +15,16 @@ import Page404 from "./pages/404/Page404";
 import styles from "./App.module.scss";
 
 const App = () => {
+  const dispatch = useDispatch();
+
   // Получаем роут для отрисовки хедэра
   // Регистрация - хэдэра нет
   const location: any = useLocation();
   console.log(location.pathname);
+
+  useEffect(() => {
+    dispatch(fetchAuth());
+  });
 
   return (
     <>

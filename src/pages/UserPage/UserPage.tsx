@@ -10,6 +10,7 @@ import { useHttp } from "../../hooks/useRequest";
 import { useParams } from "react-router-dom";
 
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
+import Page404 from "../404/Page404";
 
 interface ICreatedPostItem {
   author: string;
@@ -47,7 +48,7 @@ const UserPage = () => {
 
   useEffect(() => {
     request(`/users/${userId}`, "GET").then((res: any) =>
-      setUserPageData(res.data)
+      setUserPageData(res?.data)
     );
   }, []);
 
@@ -94,6 +95,10 @@ const UserPage = () => {
 
   if (loading) {
     return <h1>ЗАГРУЗКА</h1>;
+  }
+
+  if (!userPageData) {
+    return <Page404 />;
   }
 
   return <PageLayout leftSide={leftSide} rightSide={rightSide}></PageLayout>;

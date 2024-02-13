@@ -14,6 +14,11 @@ export const fetchRegister: any = createAsyncThunk(
   }
 );
 
+export const fetchAuth: any = createAsyncThunk("auth/fetchAuth", async () => {
+  const response = await axios.get("/auth/me");
+  return response.data;
+});
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -34,13 +39,24 @@ const authSlice = createSlice({
       state.status = "error";
       state.data = null;
     });
+
+    builder.addCase(fetchAuth.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(fetchAuth.fulfilled, (state, action) => {
+      state.status = "idle";
+      state.data = action.payload;
+    });
+    builder.addCase(fetchAuth.rejected, (state) => {
+      state.status = "error";
+      state.data = null;
+    });
   },
 });
 
 const { actions, reducer } = authSlice;
 
-// export const selectIsAuth = (state: any) => Boolean(state.auth.data);
-export const selectIsAuth = (state: any) => state.auth.data?._id;
+export const selectIsAuth = (state: any) => state.auth.data;
 
 export const authReducer = reducer;
 
