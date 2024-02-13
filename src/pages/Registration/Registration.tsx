@@ -105,6 +105,10 @@ const Registration = () => {
                 },
               })}
             />
+
+            {errors.avatarUrl && (
+              <p className={styles.error_message}>{errors.avatarUrl.message}</p>
+            )}
             <input
               className={styles.input}
               placeholder="avatarUrl"
