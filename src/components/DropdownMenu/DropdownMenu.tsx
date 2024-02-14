@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/slices/auth";
 
 import arrow from "../../images/icons/arrow.png";
@@ -13,6 +13,9 @@ interface IDropdownMenu {
   align: "left" | "right";
 }
 
+// Тут переход на свою страницу не работает
+// Пока оставил обычную ссылку "a" (так работает)
+
 const DropdownMenu = ({
   content,
   picture,
@@ -21,6 +24,7 @@ const DropdownMenu = ({
   align,
 }: IDropdownMenu) => {
   const [open, setOpen] = useState(false);
+  const authUserId = useSelector((state: any) => state.auth.data?._id);
   const dispatch = useDispatch();
 
   const openMenu = () => {
@@ -80,7 +84,7 @@ const DropdownMenu = ({
               <hr className={styles.separator} key={i}></hr>
             ) : (
               <li className={styles.listItem} key={i}>
-                <a href={item.link}>
+                <a href={`${item.link}/${authUserId}`}>
                   {item.icon && (
                     <img
                       src={item.icon}

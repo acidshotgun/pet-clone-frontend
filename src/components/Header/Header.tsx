@@ -14,6 +14,8 @@ import styles from "./Header.module.scss";
 
 const Header = () => {
   const isAuth = useSelector(selectIsAuth);
+  // User in state at the moment
+  const userData = useSelector((state: any) => state.auth);
 
   return (
     <header>
@@ -34,22 +36,22 @@ const Header = () => {
           />
         </div>
 
-        <Search />
+        {/* <Search /> */}
 
         <>
           {window.localStorage.getItem("token") && isAuth ? (
             <DropdownMenu
               content={SETTINGS_MENU}
-              picture={
-                "https://i.pinimg.com/564x/27/d1/03/27d1032d285f26f60a7e3881d9d0da4b.jpg"
-              }
+              picture={userData.data.avatarUrl}
               pictureType="square"
-              text={"@user_name"}
+              text={"@" + userData.data.nickName}
               align={"right"}
             />
           ) : (
             <div className={styles.auth}>
-              <Button text="Log in" type="grey_button" />
+              <Link to="/login">
+                <Button text="Log in" type="grey_button" />
+              </Link>
 
               <Link to="/registration">
                 <Button text="Sign up" type="white_button" />

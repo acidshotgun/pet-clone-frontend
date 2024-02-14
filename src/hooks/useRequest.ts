@@ -5,7 +5,7 @@ export const useHttp = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const request = async (url: any, method: any, body = null) => {
+  const request = async (url: any, method: string, body = null) => {
     setLoading(true);
 
     try {

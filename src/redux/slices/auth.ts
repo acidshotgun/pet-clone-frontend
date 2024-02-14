@@ -6,6 +6,7 @@ const initialState = {
   status: "idle",
 };
 
+// Регистрация
 export const fetchRegister: any = createAsyncThunk(
   "auth/fetchRegister",
   async (params) => {
@@ -14,6 +15,16 @@ export const fetchRegister: any = createAsyncThunk(
   }
 );
 
+// Login
+export const fetchLogin: any = createAsyncThunk(
+  "auth/fetchLogin",
+  async (params) => {
+    const response = await axios.post("/auth/login", params);
+    return response.data;
+  }
+);
+
+// Auth
 export const fetchAuth: any = createAsyncThunk("auth/fetchAuth", async () => {
   const response = await axios.get("/auth/me");
   return response.data;
@@ -28,6 +39,7 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // Рег
     builder.addCase(fetchRegister.pending, (state) => {
       state.status = "loading";
     });
@@ -40,6 +52,20 @@ const authSlice = createSlice({
       state.data = null;
     });
 
+    // Логин
+    builder.addCase(fetchLogin.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(fetchLogin.fulfilled, (state, action) => {
+      state.status = "idle";
+      state.data = action.payload;
+    });
+    builder.addCase(fetchLogin.rejected, (state, action) => {
+      state.status = "error";
+      state.data = action.payload;
+    });
+
+    // Ауфс
     builder.addCase(fetchAuth.pending, (state) => {
       state.status = "loading";
     });
