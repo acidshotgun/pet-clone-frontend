@@ -92,7 +92,6 @@ const Registration = () => {
               className={styles.input}
               placeholder="password"
               type="password"
-              value={"123456gg"}
               {...register("password", {
                 required: { value: true, message: "Поле обязательно" },
                 minLength: { value: 6, message: "Минимальная длина пароля 6" },
@@ -111,7 +110,7 @@ const Registration = () => {
               placeholder="avatarUrl"
               type="text"
               value={
-                "https://sun6-22.userapi.com/impg/hPlUKDSs615irosTOHjm4omF8ObJCOC6nBYyZw/79jwpguwEtc.jpg?size=1280x720&quality=95&sign=682faf74ccb25c17f6a4cbbf64b11ecc&type=album"
+                "https://i.pinimg.com/564x/20/f4/be/20f4bedc25b3e7c7ae0f5776fe350846.jpg"
               }
               {...register("avatarUrl", {
                 required: {
