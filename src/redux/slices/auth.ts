@@ -1,26 +1,44 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../services/axiosConfig";
 
+/*
+  TODO: ГОТОВО
+    1) При помощи rejectWithValue(error.response.data) - добавляю полученную ошибку в стейт
+    2) Теперь че с ней делать дальше? Как вывести ее на экран (идеал - нужные поля в регистрации)
+    3) Тож самое и в регистрации/логгин
+*/
+
 const initialState = {
+  isLogged: false,
   data: null,
+  errors: null,
   status: "idle",
 };
 
 // Регистрация
 export const fetchRegister: any = createAsyncThunk(
   "auth/fetchRegister",
-  async (params) => {
-    const response = await axios.post("/auth/register", params);
-    return response.data;
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await axios.post("/auth/register", params);
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data);
+    }
   }
 );
 
 // Login
 export const fetchLogin: any = createAsyncThunk(
   "auth/fetchLogin",
-  async (params) => {
-    const response = await axios.post("/auth/login", params);
-    return response.data;
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await axios.post("/auth/login", params);
+
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data);
+    }
   }
 );
 
@@ -36,6 +54,7 @@ const authSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.data = null;
+      state.isLogged = false;
     },
   },
   extraReducers: (builder) => {
@@ -44,12 +63,13 @@ const authSlice = createSlice({
       state.status = "loading";
     });
     builder.addCase(fetchRegister.fulfilled, (state, action) => {
-      state.status = "idle";
+      state.isLogged = true;
       state.data = action.payload;
+      state.status = "idle";
     });
-    builder.addCase(fetchRegister.rejected, (state) => {
+    builder.addCase(fetchRegister.rejected, (state, action) => {
       state.status = "error";
-      state.data = null;
+      state.errors = action.payload;
     });
 
     // Логин
@@ -57,12 +77,13 @@ const authSlice = createSlice({
       state.status = "loading";
     });
     builder.addCase(fetchLogin.fulfilled, (state, action) => {
-      state.status = "idle";
+      state.isLogged = true;
       state.data = action.payload;
+      state.status = "idle";
     });
     builder.addCase(fetchLogin.rejected, (state, action) => {
       state.status = "error";
-      state.data = action.payload;
+      state.errors = action.payload;
     });
 
     // Ауфс
@@ -70,8 +91,9 @@ const authSlice = createSlice({
       state.status = "loading";
     });
     builder.addCase(fetchAuth.fulfilled, (state, action) => {
-      state.status = "idle";
+      state.isLogged = true;
       state.data = action.payload;
+      state.status = "idle";
     });
     builder.addCase(fetchAuth.rejected, (state) => {
       state.status = "error";
@@ -81,8 +103,6 @@ const authSlice = createSlice({
 });
 
 const { actions, reducer } = authSlice;
-
-export const selectIsAuth = (state: any) => state.auth.data;
 
 export const authReducer = reducer;
 

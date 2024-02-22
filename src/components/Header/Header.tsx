@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { selectIsAuth } from "../../redux/slices/auth";
 import { Link } from "react-router-dom";
 
 // Components
@@ -13,7 +12,6 @@ import logo from "../../images/logo.png";
 import styles from "./Header.module.scss";
 
 const Header = () => {
-  const isAuth = useSelector(selectIsAuth);
   // User in state at the moment
   const userData = useSelector((state: any) => state.auth);
 
@@ -39,7 +37,7 @@ const Header = () => {
         {/* <Search /> */}
 
         <>
-          {window.localStorage.getItem("token") && isAuth ? (
+          {localStorage.getItem("token") && userData.isLogged ? (
             <DropdownMenu
               content={SETTINGS_MENU}
               picture={userData.data.avatarUrl}

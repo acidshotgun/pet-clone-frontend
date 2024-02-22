@@ -23,8 +23,12 @@ const App = () => {
   const location: any = useLocation();
 
   useEffect(() => {
-    dispatch(fetchAuth());
-  });
+    if (localStorage.getItem("token")) {
+      dispatch(fetchAuth());
+    }
+  }, []);
+
+  console.log("App render");
 
   return (
     <>

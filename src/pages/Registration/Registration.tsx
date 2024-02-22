@@ -1,7 +1,8 @@
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRegister, selectIsAuth } from "../../redux/slices/auth";
+import { fetchRegister } from "../../redux/slices/auth";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useEffect } from "react";
 
 import ComponentLayout from "../../components/Layout/ComponentLayout/ComponentLayout";
 
@@ -18,9 +19,15 @@ interface IFormInput {
 
 const Registration = () => {
   const dispatch = useDispatch();
-  const userId = useSelector(selectIsAuth);
+  const userData = useSelector((state: any) => state.auth);
+  const navigate = useNavigate();
 
-  console.log(userId);
+  useEffect(() => {
+    if (userData.isLogged) {
+      localStorage.setItem("token", userData.data.token);
+      navigate(`/users/${userData.data._id}`);
+    }
+  }, [userData.isLogged]);
 
   const {
     register,
@@ -29,24 +36,13 @@ const Registration = () => {
   } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = async (formData) => {
-    const data = await dispatch(fetchRegister(formData));
-
-    if (!data.payload) {
-      return alert("Не удалось зарегистрироваться");
-    }
-
-    if ("token" in data.payload) {
-      window.localStorage.setItem("token", data.payload.token);
-    }
+    await dispatch(fetchRegister(formData));
   };
-
-  if (Boolean(userId?._id)) {
-    return <Navigate to={`/users/${userId?._id}`} />;
-  }
 
   return (
     <div className={styles.wrapper}>
       <ComponentLayout>
+        {userData.status === "error" && <h1>{userData.errors[0].msg}</h1>}
         <div className={styles.form_container}>
           <div className={styles.app_image}>
             <img src={app_image} alt="app_image"></img>
@@ -96,6 +92,7 @@ const Registration = () => {
               className={styles.input}
               placeholder="password"
               type="password"
+              value={"123456gg"}
               {...register("password", {
                 required: { value: true, message: "Поле обязательно" },
                 minLength: { value: 6, message: "Минимальная длина пароля 6" },
@@ -113,6 +110,9 @@ const Registration = () => {
               className={styles.input}
               placeholder="avatarUrl"
               type="text"
+              value={
+                "https://sun6-22.userapi.com/impg/hPlUKDSs615irosTOHjm4omF8ObJCOC6nBYyZw/79jwpguwEtc.jpg?size=1280x720&quality=95&sign=682faf74ccb25c17f6a4cbbf64b11ecc&type=album"
+              }
               {...register("avatarUrl", {
                 required: {
                   value: true,

@@ -18,3 +18,10 @@ root.render(
     </Router>
   </React.StrictMode>
 );
+// root.render(
+//   <Router>
+//     <Provider store={store}>
+//       <App />
+//     </Provider>
+//   </Router>
+// );

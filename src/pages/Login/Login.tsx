@@ -1,7 +1,8 @@
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchLogin, selectIsAuth } from "../../redux/slices/auth";
+import { fetchLogin } from "../../redux/slices/auth";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useEffect } from "react";
 
 import ComponentLayout from "../../components/Layout/ComponentLayout/ComponentLayout";
 
@@ -14,15 +15,17 @@ interface IFormInput {
   password: string;
 }
 
-// TODO
-// При неверных данных
-// Я получаю 400 ошибку
-// Как поместить сообщение об ошибке в стейт???
-
 const Login = () => {
   const dispatch = useDispatch();
-  const userId = useSelector(selectIsAuth);
-  const loginData = useSelector((state: any) => state.auth);
+  const userData = useSelector((state: any) => state.auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userData.isLogged) {
+      localStorage.setItem("token", userData.data.token);
+      navigate(`/users/${userData.data._id}`);
+    }
+  }, [userData.isLogged]);
 
   const {
     register,
@@ -31,25 +34,13 @@ const Login = () => {
   } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = async (formData) => {
-    const data = await dispatch(fetchLogin(formData));
-
-    if (!data.payload) {
-      console.log(loginData);
-      return alert("Не верный логин или пароль");
-    }
-
-    if ("token" in data.payload) {
-      window.localStorage.setItem("token", data.payload.token);
-    }
+    await dispatch(fetchLogin(formData));
   };
-
-  if (Boolean(userId?._id)) {
-    return <Navigate to={`/users/${userId?._id}`} />;
-  }
 
   return (
     <div className={styles.wrapper}>
       <ComponentLayout>
+        {userData.status === "error" && <h1>{userData.errors.message}</h1>}
         <div className={styles.form_container}>
           <div className={styles.app_image}>
             <img src={app_image} alt="app_image"></img>
